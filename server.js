@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173" }));
 
 app.use("/api/user/", authRoutes);
-// app.use("/api/transaction/", transactionRoutes);
+app.use("/api/transaction/", transactionRoutes);
 
 connectDB().then(() => {
   const PORT = process.env.PORT || 3000;
