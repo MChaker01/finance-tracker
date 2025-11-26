@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Define the Transaction schema
 const transactionSchema = mongoose.Schema(
   {
     amount: {
@@ -13,6 +14,7 @@ const transactionSchema = mongoose.Schema(
     },
     category: {
       type: String,
+      // Restrict to predefined categories
       enum: [
         "Food",
         "Salary",
@@ -33,17 +35,21 @@ const transactionSchema = mongoose.Schema(
     date: {
       type: Date,
       required: [true, "Date is required"],
-      default: Date.now,
+      default: Date.now, // Use current date/time if not provided
     },
     user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: [true, "user is required"],
+      type: mongoose.Schema.Types.ObjectId, // Reference to User model
+      ref: "User", // Link to the User collection
+      required: [true, "user is required"], // Every transaction must belong to a user
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
+// Create the Transaction model
+// "Transaction" becomes "transactions" collection in MongoDB
 const Transaction = mongoose.model("Transaction", transactionSchema);
 
 module.exports = Transaction;

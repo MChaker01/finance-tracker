@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// Define the User schema - blueprint for user documents in MongoDB
 const userSchema = mongoose.Schema(
   {
     username: {
@@ -13,7 +14,7 @@ const userSchema = mongoose.Schema(
       type: String,
       unique: true,
       required: [true, "email is required"],
-      match: [/.+@.+\..+/, "Please enter a valid email"],
+      match: [/.+@.+\..+/, "Please enter a valid email"], // Regex validation
       trim: true,
     },
     password: {
@@ -22,9 +23,13 @@ const userSchema = mongoose.Schema(
       minlength: 6,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
+// Create the User model from the schema
+// "User" will become the "users" collection in MongoDB
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
