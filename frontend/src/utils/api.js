@@ -32,7 +32,10 @@ api.interceptors.response.use(
   },
   function (error) {
     // Only handle 401 Unauthorized errors (token expired/invalid)
-    if (error.response?.status === 401) {
+    if (
+      error.response?.status === 401 &&
+      !error.config.url.includes("/login")
+    ) {
       // Clear authentication data
       localStorage.removeItem("user");
       localStorage.removeItem("token");
