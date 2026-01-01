@@ -6,6 +6,7 @@ import PublicRoute from "./components/PublicRoute";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
 import RootRedirect from "./components/RootRedirect";
+import { TransactionProvider } from "./context/TransactionContext";
 function App() {
   return (
     <AuthProvider>
@@ -30,9 +31,11 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
+            <TransactionProvider>
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            </TransactionProvider>
           }
         ></Route>
 

@@ -86,6 +86,6 @@ export const updateTransaction = async (transactionId, updatedData) => {
 };
 
 // Delete transaction
-export const deleteTransaction = async (transactionId) => {
+export const deleteTransactionById = async (transactionId) => {
   return api.delete(`/transaction/${transactionId}`);
 };
