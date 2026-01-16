@@ -1,4 +1,4 @@
-# Project 7: Personal Finance Tracker (MERN)
+# Personal Finance Tracker (MERN)
 
 A professional full-stack financial management application that allows users to track income and expenses, visualize their total balance in real-time, and manage transactions through a secure, authenticated interface.
 
